@@ -1,3 +1,6 @@
+body {
+    overflow-x: hidden;
+}
 /* navbar */
 .navbar-brand {
     font-variant-caps: small-caps;

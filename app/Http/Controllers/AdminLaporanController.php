@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Laporan;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AdminLaporanController extends Controller
 {
@@ -18,7 +19,6 @@ class AdminLaporanController extends Controller
             'laporans' => Laporan::all()
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      *

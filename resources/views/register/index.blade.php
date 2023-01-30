@@ -28,10 +28,17 @@
                      {{$message}}
                     </div>
                      @enderror
-            
+                     <div class="form-floating">
+              <input type="text" name="nohp" class="form-control rounded-bottom @error('nohp')is-invalid @enderror" id="nohp" placeholder="No Hp" required >
+              <label for="password">No HP</label>
+              @error('nohp')
+                  <div class="invalid-feedback">
+                     {{$message}}
+                     </div>
+                     @enderror
                 <div class="form-floating">
                   <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="name@gmail.com" required value="{{ old ('email')}}">
-                  <label for="email">Nomor Telepon atau email</label>
+                  <label for="email">Email</label>
                   @error('email')
                   <div class="invalid-feedback">
                      {{$message}}

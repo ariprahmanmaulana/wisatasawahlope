@@ -88,5 +88,5 @@ Route::resource('/dashboard/laporans', AdminLaporanController::class)->except('s
 Route::resource('/dashboard/gazebos', AdminGazeboController::class)->except('show');
 
 // booking gazebo
-Route::resource('/createbooking', BookingController::class)->except('show');
-Route::post('/booking', [BookingController::class, 'store']);
+Route::resource('/createbooking', BookingController::class)->except('show')->middleware('auth');
+Route::post('/booking', [BookingController::class, 'store'])->middleware('auth');

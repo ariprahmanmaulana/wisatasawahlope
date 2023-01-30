@@ -43,8 +43,6 @@
                     </div>
                 @enderror
             </div>
-            
-            
             <button type="submit" class="btn btn-primary">Tambah</button>
             </form>
           </div>

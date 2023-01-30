@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
+<style>
+    body {
+        overflow-x: hidden; 
+    }
+</style>
 <h3 class="mb-3 ms-5">{{ $title }}</h3>
 
 <div class="row justify-content-center mb-3">
@@ -22,7 +27,7 @@
 
 @if ($posts->count() )
 
-<div class="container ">
+<div class="container">
     <div class="row justify-content-center mb-3">
         <div class="col-lg-10">
             <div class="card">
@@ -36,10 +41,10 @@
 
                     <p class="card-text">{{$posts[0]->excerpt}}</p>
 
-                    <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary"> Read More </a>
+                    <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary"> Lihat </a>
                 </div>
                 @if ($posts[0]->image)
-                                <div style="max-height: 100%; overflow:hidden;">
+                                <div style="max-height:100%; overflow:hidden;">
                                     <img src="{{asset('storage/' .$posts[0]->image)}}" class="card-img-top" alt="{{$posts[0]->category->name}} " class="img-fluid">
                                 </div>
 
@@ -72,7 +77,9 @@
                     <a href="/posts/{{ $post->slug }}" class="text-decoration-none btn btn-primary"> Lihat </a>
                 </div>
                                     @if ($post->image)
+                                    <div style="max-height:100%; overflow:hidden;">
                                         <img src="{{ asset('storage/' .$post->image)}}" alt="{{$post->category->name}} " class="img-fluid ">
+                                    </div>
                                     @else
                                         <img src="https://source.unsplash.com/800x400?{{$post->category->name}}" class="card-img-top" alt="{{$post->category->name}}">
                                     @endif

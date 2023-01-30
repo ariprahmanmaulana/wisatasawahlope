@@ -9,7 +9,12 @@
                     {{ session('success')}}
               </div>
           @endif
+          @if (session()->has('error'))
+                <div class="alert alert-danger col-lg-8 text-center" role="alert">
+                    {{ session('error')}}
+                </div>
           </div>
+          @endif
     <div class="row justify-content-center mb-3">
         <div class="col-md-6 d-flex">
             <div class="card" style="width: 18rem;">

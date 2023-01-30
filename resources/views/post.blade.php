@@ -8,7 +8,7 @@
             <p>By. <a href="/posts?author={{ $post->author->username}}" class="text-decoration-none">{{$post->author->name}}</a> in  <a href="/posts?category={{$post->category->slug}}"  class="text-decoration-none">{{$post->category->name}}</a></p>
 
             @if ($post->image)
-                <div style="max-height: 420px; overflow:hidden;" >
+                <div style="max-height: 100%; overflow:hidden;" >
                     <img src="{{ asset('storage/' .$post->image)}}" alt="{{$post->category->name}} " class="img-fluid">
                 </div>
 

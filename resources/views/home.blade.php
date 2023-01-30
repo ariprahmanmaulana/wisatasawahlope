@@ -41,6 +41,8 @@
 
         <div class="container">
           <div class="carousel-caption text-end">
+            <h3>Objek Wisata Sawah Lope </h3>
+            <h5>Jln. Sidumampir Dsn Manis Desa Cikaso Kecamatan Kramatmulya Kabupaten Kuningan Jawa Barat</h5>
           </div>
         </div>
       </div>
@@ -70,7 +72,7 @@
                     <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none text-dark">{{$posts[0]->title}}</a></h3>
                     <p>
                         <small class="text-muted">
-                            By.  <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none">{{$posts[0]->author->name}}</a>  in <a href="/posts?category={{$posts[0]->category->slug}}">{{$posts[0]->category->name}}</a> {{$posts[0]->created_at->diffForHumans() }}
+                            By.  <a href="/posts?author={{ $posts[0]->author->username}}" class="text-decoration-none">{{$posts[0]->author->name}}</a>  in <a href="/posts?category={{$posts[0]->category->slug}}"  class="text-decoration-none">{{$posts[0]->category->name}}</a> {{$posts[0]->created_at->diffForHumans() }}
                         </small>
                     </p>
 
@@ -79,7 +81,7 @@
                     <a href="/posts/{{ $posts[0]->slug }}" class="text-decoration-none btn btn-primary"> Read More </a>
                 </div>
                 @if ($posts[0]->image)
-                                <div style="max-height: 800px; overflow:hidden;">
+                                <div style="overflow:hidden;">
                                     <img src="{{asset('storage/' .$posts[0]->image)}}" class="card-img-top" alt="{{$posts[0]->category->name}} " class="img-fluid">
                                 </div>
 

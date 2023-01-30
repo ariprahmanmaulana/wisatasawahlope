@@ -39,9 +39,10 @@
             <div class="col-lg-6">
             <form action="/booking" method="post" class="mb-5" enctype="multipart/form-data">
                 @csrf
+                @foreach ($daftar_user as $data)
             <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
-                <input type="text" class="form-control @error ('name') is-invalid @enderror" id="name" name="name" required autofocus value="{{ old('name')}}">
+                <input type="text" class="form-control @error ('name') is-invalid @enderror" id="name" name="name" readonly required autofocus value="{{$data->name}}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -50,12 +51,13 @@
             </div>
             <div class="mb-3">
                 <label for="nohp" class="form-label">Nomor Whatshap</label>
-                <input type="text" class="form-control @error ('nohp') is-invalid @enderror" id="nohp" name="nohp" required autofocus value="{{ old('nohp')}}">
+                <input type="text" class="form-control @error ('nohp') is-invalid @enderror" id="nohp" name="nohp" required readonly autofocus value="{{$data->nohp}}">
                 @error('nohp')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
                 @enderror
+                @endforeach
             </div>
             <div class="mb-3">
                 <label for="category_gazebos" class="form-label">Category Gazebo</label>
@@ -80,7 +82,7 @@
             </div>
             <div class="mb-3">
                 <label for="masuk" class="form-label">Jam Masuk</label>
-                <input type="time" class="form-control @error ('masuk') is-invalid @enderror" id="masuk" name="masuk" required autofocus value="{{ old('masuk')}}">
+                <input type="time" min="08:00" max="16:30" class="form-control @error ('masuk') is-invalid @enderror" id="masuk" name="masuk" required autofocus value="{{ old('masuk')}}">
                 @error('masuk')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -89,7 +91,7 @@
             </div>
             <div class="mb-3">
                 <label for="keluar" class="form-label">Keluar</label>
-                <input type="time" class="form-control @error ('keluar') is-invalid @enderror" id="keluar" name="keluar" required autofocus value="{{ old('keluar')}}">
+                <input type="time" min="08:00" max="16:30" class="form-control @error ('keluar') is-invalid @enderror" id="keluar" name="keluar" required autofocus value="{{ old('keluar')}}">
                 @error('keluar')
                     <div class="invalid-feedback">
                         {{$message}}
