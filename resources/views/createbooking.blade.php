@@ -50,7 +50,7 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label for="nohp" class="form-label">Nomor Whatshap</label>
+                <label for="nohp" class="form-label">Nomor Whatsapp</label>
                 <input type="text" class="form-control @error ('nohp') is-invalid @enderror" id="nohp" name="nohp" required readonly autofocus value="{{$data->nohp}}">
                 @error('nohp')
                     <div class="invalid-feedback">

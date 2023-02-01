@@ -7,6 +7,7 @@ use App\Models\CategoryGazebo;
 use App\Models\Gazebo;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use GuzzleHttp\Middleware;
 
 class BookingController extends Controller
 {
@@ -19,13 +20,18 @@ class BookingController extends Controller
     {
         $user = auth()->id();
         $data = User::where('id', $user)->get();
-        return view('createbooking',[
-            'gazebos' => Gazebo::all(),
-            'title' => 'Booking',
-            'active' => 'Booking',
-            'category_gazebos' => CategoryGazebo::all(),
-            'daftar_user' => $data
-        ]);
+        if($data == true){
+            return view('createbooking',[
+                'gazebos' => Gazebo::all(),
+                'title' => 'Booking',
+                'active' => 'Booking',
+                'category_gazebos' => CategoryGazebo::all(),
+                'daftar_user' => $data
+            ]);
+        }else{
+            return redirect('/booking')->with('failed','Untuk admin diharapkan mengisi dibagian data admin');
+        }
+        
     }
 
     /**
@@ -37,11 +43,16 @@ class BookingController extends Controller
     {
         $user = auth()->id();
         $data = User::where('id', $user)->get();
-        return view ('createbooking', [
-            'gazebos' => Gazebo::all(),
-            'category_gazebos' => CategoryGazebo::all(),
-            'daftar_user' => $data
-        ]);
+        if($data == true){
+            return view ('createbooking', [
+                'gazebos' => Gazebo::all(),
+                'category_gazebos' => CategoryGazebo::all(),
+                'daftar_user' => $data
+            ]);
+        }else{
+            return redirect('/booking')->with('failed','Untuk admin diharapkan mengisi dibagian data admin');
+        }
+        
     }
 
     /**

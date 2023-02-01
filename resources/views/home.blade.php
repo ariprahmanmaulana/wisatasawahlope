@@ -12,6 +12,18 @@
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
     </div>
+    <div class="row justify-content-center">
+            @if (session()->has('success'))
+                <div class="alert alert-success col-lg-8 text-center" role="alert">
+                    {{ session('success')}}
+              </div>
+          @endif
+          @if (session()->has('error'))
+                <div class="alert alert-danger col-lg-8 text-center" id="alert" role="alert">
+                    {{ session('error')}}
+                </div>
+          </div>
+          @endif
     <div class="carousel-inner">
       <div class="carousel-item active">
         {{-- <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg> --}}
@@ -179,4 +191,15 @@
       
       <h6>&copy; Copyright 2022 - Kuningan || Sawah Lope Desa Cikaso || All Rights Reserved || Powered by Kerja Praktek 58 UNIKU 2022</h6>
     </footer>
+    <script>
+      $(document).ready (function(){
+   $("#success-alert").hide();
+   $("#myWish").click(function showAlert() {
+      $("#success-alert").alert();
+      window.setTimeout(function () { 
+         $("#success-alert").alert('close'); 
+      }, 2000);             
+   });      
+});
+    </script>
 @endsection

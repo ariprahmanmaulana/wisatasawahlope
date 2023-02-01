@@ -13,7 +13,6 @@
         <li class="nav-item me-3">
           <a class="nav-link {{ ($active === "booking") ? "active" : "" }}" href="/booking">Booking</a>
         </li>
-        
         <li class="nav-item me-3">
           <a class="nav-link {{ ($active === "posts") ? "active" : "" }}" href="/posts">Posts</a>
         </li>

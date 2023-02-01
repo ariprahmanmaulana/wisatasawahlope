@@ -11,8 +11,6 @@ use App\Http\Controllers\AdminGazeboController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
-use App\Models\User;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +42,7 @@ Route::get('/booking', function () {
         'title' => 'Booking',
         'active' => 'booking'
     ]);
-});
-
-
+})->middleware('member');
 
 Route::get('/posts',[PostController::class,'index']);
 Route::get('/posts/{post:slug}',[PostController::class,'show']);
@@ -75,8 +71,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard',function(){
     return view('dashboard.index');
 })->middleware('auth');
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('member');
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('member');
 
 // admin
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
@@ -88,5 +84,5 @@ Route::resource('/dashboard/laporans', AdminLaporanController::class)->except('s
 Route::resource('/dashboard/gazebos', AdminGazeboController::class)->except('show');
 
 // booking gazebo
-Route::resource('/createbooking', BookingController::class)->except('show')->middleware('auth');
-Route::post('/booking', [BookingController::class, 'store'])->middleware('auth');
+Route::resource('/createbooking', BookingController::class)->except('show')->middleware('member');
+Route::post('/booking', [BookingController::class, 'store'])->middleware('member');
