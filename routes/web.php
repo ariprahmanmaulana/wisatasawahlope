@@ -45,7 +45,7 @@ Route::get('/booking', function () {
 })->middleware('member');
 
 Route::get('/posts',[PostController::class,'index']);
-Route::get('/posts/{post:slug}',[PostController::class,'show']);
+Route::get('/posts/{post:slug}',[PostController::class,'show'])->middleware('guest');
 
 
 Route::get('/categories', function(){
@@ -71,8 +71,8 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/dashboard',function(){
     return view('dashboard.index');
 })->middleware('auth');
-Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('member');
-Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('member');
+Route::get('/dashboard/posts/checkSlug', [DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
 
 // admin
 Route::resource('/dashboard/categories', AdminCategoryController::class)->except('show')->middleware('admin');
